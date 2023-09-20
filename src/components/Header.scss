@@ -1,0 +1,36 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+    position: sticky;
+}
+
+.search-input {
+    margin-left: 60px;
+}
+
+.header-title {
+    font-family: Brush Script MT;
+    font-size: 40px;
+    color: firebrick;
+}
+
+.social-media {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 96px;
+    margin-right: 60px;
+}
+
+.sm-item {
+    display: inline-block;
+    height: 28px;
+    width: 28px;
+    border-radius: 14px;
+    border: 1px solid black;
+    vertical-align: middle;
+    text-align: center;
+}

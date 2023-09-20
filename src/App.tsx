@@ -1,24 +1,69 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+//import logo from './logo.svg';
+//import './App.scss';
+import axios from 'axios';
+import banner from './img/banner3.jpg'
+import Header from './components/Header'
+import Categories from './components/Categories';
 
 function App() {
+
+  const appId = '3b872ec0'
+  const appKey = '596e8d06586cc0c44bddfde37916282f'
+  let config = {
+    url: `https://api.edamam.com/api/recipes/v2?app_id=${appId}&app_key=${appKey}&type=public&q=noodle`,
+    method: "get",
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Credentials': 'true'
+    }
+  };
+  let recipes = axios.request(config).then(response => response.data)
+  console.log(recipes)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    // main page
+    <div>
+
+      {/* header */}
+      <Header />
+
+      {/* banner  */}
+      <img src={banner} alt="" width={'100%'}/>
+
+      {/* categories carousel */}
+      <Categories />
+
+      {/* random recipe */}
+      <div>
+        {/* dish img */}
+        <img src="" alt="" />
+
+        {/* description */}
+        <div>
+
+        </div>
+      </div>
+
+      {/* latest recipes */}
+      <div>
+
+      </div>
+
+      {/* vote */}
+      <div>
+
+      </div>
+
+      {/* popular recipes */}
+      <div>
+
+      </div>
+
+      {/* footer */}
+      <div>
+
+      </div>
     </div>
   );
 }
