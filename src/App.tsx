@@ -5,6 +5,8 @@ import axios from 'axios';
 import banner from './img/banner3.jpg'
 import Header from './components/Header'
 import Categories from './components/Categories';
+import RandomRecipe from './components/RandomRecipe';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -19,8 +21,8 @@ function App() {
       'Access-Control-Allow-Credentials': 'true'
     }
   };
-  let recipes = axios.request(config).then(response => response.data)
-  console.log(recipes)
+  // let recipes = axios.request(config).then(response => response.data)
+  // console.log(recipes)
   return (
     // main page
     <div>
@@ -35,15 +37,7 @@ function App() {
       <Categories />
 
       {/* random recipe */}
-      <div>
-        {/* dish img */}
-        <img src="" alt="" />
-
-        {/* description */}
-        <div>
-
-        </div>
-      </div>
+      <RandomRecipe />
 
       {/* latest recipes */}
       <div>
@@ -61,9 +55,8 @@ function App() {
       </div>
 
       {/* footer */}
-      <div>
-
-      </div>
+      <Footer />
+      
     </div>
   );
 }

@@ -6,7 +6,9 @@ function Header() {
   return (
     <div className='header'>
       {/* search */}
-      <input className='search-input' type="text" />
+      <div className='search-input-container'>
+        <input className='search-input' type="text" />
+      </div>
 
       {/* title */}
       <div className='header-title'>
