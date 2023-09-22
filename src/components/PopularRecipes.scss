@@ -1,0 +1,43 @@
+.popular-recipes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px auto;
+}
+
+.popular-recipes {
+    width: calc(100% - 160px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 80px;
+    row-gap: 40px;
+    
+}
+
+.popular-recipe {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 120px;
+}
+
+.pr-img {
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+
+.pr-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.descr-container {
+    margin-left: 30px;
+}
+
+.pr-title {
+    font-weight: bold;
+}
+

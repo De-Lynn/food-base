@@ -29,7 +29,7 @@
 .social-media {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
     margin-right: 80px;
     width: calc((100% - 160px) / 3);
 }

@@ -7,6 +7,8 @@ import Header from './components/Header'
 import Categories from './components/Categories';
 import RandomRecipe from './components/RandomRecipe';
 import Footer from './components/Footer';
+import LatestRecipes from './components/LatestRecipes';
+import PopularRecipes from './components/PopularRecipes';
 
 function App() {
 
@@ -40,9 +42,7 @@ function App() {
       <RandomRecipe />
 
       {/* latest recipes */}
-      <div>
-
-      </div>
+      <LatestRecipes />
 
       {/* vote */}
       <div>
@@ -50,9 +50,7 @@ function App() {
       </div>
 
       {/* popular recipes */}
-      <div>
-
-      </div>
+      <PopularRecipes />
 
       {/* footer */}
       <Footer />
