@@ -20,9 +20,6 @@
 }
 
 .img-container {
-    @function img-width($n) {
-        @return $n
-    }
     width: 100%;
     aspect-ratio: 1/1;
 }

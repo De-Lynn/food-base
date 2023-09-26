@@ -18,10 +18,10 @@
     flex-direction: row;
     justify-content: space-between;
     width: calc(100% - 160px);
+    align-items: center;
 }
 
 .category {
-    // border: 1px solid black;
     width: 120px;
     height: 130px;
     display: flex;
@@ -39,4 +39,25 @@ div.img {
     height: 110px;
     width: 110px;
     border-radius: 50%;
+}
+
+.categories-carousel button {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    border: none;
+    background: no-repeat url('../img/arrow.png') center;
+    background-size: 60px;
+}
+
+.categories-carousel button:hover {
+    background-color: rgb(244, 236, 236);
+}
+
+.categories-carousel button:first-child {
+    transform: rotate(180deg);
+}
+
+.categories-carousel button:disabled {
+    opacity: 0.25;
 }
