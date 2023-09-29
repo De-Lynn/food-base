@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './Header.scss'
 
 function Header() {
@@ -11,9 +12,10 @@ function Header() {
       </div>
 
       {/* title */}
-      <div className='header-title'>
+      <Link className='link header-title' to={'/'}>
         Pleasure Food
-      </div>
+      </Link>
+      
       
       {/* social media */}
       <div className="social-media">

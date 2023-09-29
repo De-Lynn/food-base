@@ -1,5 +1,6 @@
 import './RandomRecipe.scss'
 import lasagna from '../img/lasagna.jpg'
+import { Link } from 'react-router-dom'
 
 function RandomRecipe() {
     return (
@@ -16,7 +17,9 @@ function RandomRecipe() {
                     There will be recipe description. There will be recipe description.
                     There will be recipe description. There will be recipe description.
                 </p>
-                <button>View recipe</button>
+                <Link to={'/recipes/1'}>
+                    <button>View recipe</button>
+                </Link>
             </div>
         </div>
     )

@@ -3,6 +3,7 @@ import recipe1 from '../img/breakfast.jpg'
 import recipe2 from '../img/lunch.jpg'
 import recipe3 from '../img/snack.jpeg'
 import recipe4 from '../img/brunch.jpg'
+import { Link } from 'react-router-dom'
 
 function PopularRecipes() {
     const recipes = [
@@ -18,17 +19,19 @@ function PopularRecipes() {
             <div className='popular-recipes'>
                 {recipes.map(el => {
                     return (
-                        <div className='popular-recipe'>
-                            <div className='pr-img'>
-                                <img src={el.img} alt="" />
-                            </div>
-                            <div className='descr-container'>
-                                <div className='pr-title'>{el.title}</div>
-                                <div>rates</div>
-                                <div>{el.desciption}</div>  
-                                <div>time</div>
-                            </div>
-                        </div>
+                        <Link className='link' to={'/recipes/1'}>
+                            <div className='popular-recipe'>
+                                <div className='pr-img'>
+                                    <img src={el.img} alt="" />
+                                </div>
+                                <div className='descr-container'>
+                                    <div className='pr-title'>{el.title}</div>
+                                    <div>rates</div>
+                                    <div>{el.desciption}</div>  
+                                    <div>time</div>
+                                </div>
+                            </div> 
+                        </Link>
                     )
                 })}
             </div>

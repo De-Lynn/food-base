@@ -2,13 +2,11 @@ import React from 'react';
 //import logo from './logo.svg';
 //import './App.scss';
 import axios from 'axios';
-import banner from './img/banner3.jpg'
 import Header from './components/Header'
-import Categories from './components/Categories';
-import RandomRecipe from './components/RandomRecipe';
 import Footer from './components/Footer';
-import LatestRecipes from './components/LatestRecipes';
-import PopularRecipes from './components/PopularRecipes';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import RecipePage from './components/RecipePage';
+import Home from './components/Home';
 
 function App() {
 
@@ -26,36 +24,22 @@ function App() {
   // let recipes = axios.request(config).then(response => response.data)
   // console.log(recipes)
   return (
-    // main page
-    <div>
-
-      {/* header */}
-      <Header />
-
-      {/* banner  */}
-      <img src={banner} alt="" width={'100%'}/>
-
-      {/* categories carousel */}
-      <Categories />
-
-      {/* random recipe */}
-      <RandomRecipe />
-
-      {/* latest recipes */}
-      <LatestRecipes />
-
-      {/* vote */}
+    <BrowserRouter>
+      {/* main page */}
       <div>
+        {/* header */}
+        <Header />
 
+        {/* body */}
+        <Routes>
+          <Route path={'/'} element={<Home />} />
+          <Route path={'/recipes/:recipeId'} element={<RecipePage />} />
+        </Routes>
+
+        {/* footer */}
+        <Footer />
       </div>
-
-      {/* popular recipes */}
-      <PopularRecipes />
-
-      {/* footer */}
-      <Footer />
-      
-    </div>
+    </BrowserRouter>
   );
 }
 
