@@ -44,7 +44,7 @@ function Categories() {
     }
 
     return (
-        <div className="categories">
+        <div className="categories _container">
             <div className="title">Categories</div>
             <div className="categories-carousel">
                 <button onClick={toPrev} disabled={window[0].id===1 ? true : false}>

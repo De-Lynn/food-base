@@ -1,6 +1,4 @@
 import React from 'react';
-//import logo from './logo.svg';
-//import './App.scss';
 import axios from 'axios';
 import Header from './components/Header'
 import Footer from './components/Footer';
@@ -26,7 +24,7 @@ function App() {
   return (
     <BrowserRouter>
       {/* main page */}
-      <div>
+      <div className='wrapper'>
         {/* header */}
         <Header />
 

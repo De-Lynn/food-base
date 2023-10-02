@@ -17,21 +17,19 @@ function LatestRecipes() {
             <div className='latest-recipes'>
                 {recipes.map(el => {
                     return (
-                            <div className='latest-recipe'>
-                                <div className='img-container'>
-                                    <img src={el.img} alt="" />
-                                </div>
-                                <div className='bottom-container'>
-                                    <Link className='link' to={'/recipes/1'}>
-                                        <div className='lr-title'><span>{el.title}</span></div>
-                                    </Link>
-                                    <div className='description'>
-                                        <span>{el.desciption}</span>
-                                        <br/>
-                                        <span>time</span>
-                                    </div>
-                                </div>
+                        <div className='latest-recipe'>
+                            <div className='img-container'>
+                                <img src={el.img} alt="" />
                             </div>
+                            <Link className='link' to={'/recipes/1'}>
+                                <div className='lr-title'><span>{el.title}</span></div>
+                            </Link>
+                            <div className='description'>
+                                <span>{el.desciption}</span>
+                                <br/>
+                                <span>time</span>
+                            </div>
+                    </div>
                     )
                 })}
             </div>

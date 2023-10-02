@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
@@ -12,11 +13,14 @@ code {
     monospace;
 }
 
-#root {
-  width: 80%;
-  margin: 0 auto;
-  box-shadow: 
-    3px -10px 10px rgb(212, 206, 206),  
-    -3px -10px 10px rgb(212, 206, 206);
+.wrapper {
+  min-height: 100%;
+}
+
+._container {
+  max-width: 1080px;
+  margin: 0px auto;
+  padding: 0px 15px;
+  box-sizing: content-box;
 }
 

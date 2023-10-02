@@ -3,43 +3,72 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    min-height: 60px;
     position: sticky;
-    top: 0px;
+    top: 0;
     background: white;
     z-index: 9999;
-    border-bottom: 1px solid rgb(254, 167, 135);
 }
 
-.search-input-container {
-    width: calc((100% - 160px) / 3);
-    margin-left: 80px;
+.header__input.input__container {
+    width: calc(100% / 3);
 }
 
-.header-title {
+.header__input.input {
+    width: 80%;
+}
+
+.header__logo {
     font-family: Brush Script MT;
-    font-size: 40px;
+    font-size: calc(24px + 16 * ((100vw - 375px) / (1080 - 375)));
     color: firebrick;
     text-align: center;
     align-self: center;
-    width: calc((100% - 160px) / 3);
+    width: calc(100% / 3);
+}
+
+@media screen and (min-width: 1080px) {
+    .header__logo {
+        font-size: 40px;
+    }
+    .sm-item {
+        height: 28px;
+        font-size: 16px;
+    }
 }
 
 .social-media {
+    height: 100%;
+    width: calc(100% / 3);
+    display: flex;
+    padding: 4px 0;
+}
+
+.sm-list {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    margin-right: 80px;
-    width: calc((100% - 160px) / 3);
+    justify-content: start;
+    height: 100%;
+    margin: auto 0px auto auto;
+    flex-wrap: wrap;
+}
+
+@function smItemFontSize($height) {
+    @return calc($height - 12px)
 }
 
 .sm-item {
+    $smItemHeight: calc(22px + 6 * ((100vw - 375px) / (1080 - 375)));
     display: inline-block;
-    height: 28px;
-    width: 28px;
-    margin: auto 4px;
-    border-radius: 14px;
+    height: $smItemHeight;
+    font-size: smItemFontSize($smItemHeight);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
     border: 1px solid black;
-    vertical-align: middle;
     text-align: center;
+    line-height: calc($smItemHeight);
+}
+
+.sm-item:not(:last-child) {
+    margin: 0 8px 0px 0
 }

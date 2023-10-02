@@ -6,26 +6,29 @@ import banner from '../img/banner3.jpg'
 
 function Home() {
     return (
-        <div>
+        <div className="home-page">
             {/* banner  */}
-            <img src={banner} alt="" width={'100%'}/>
+            <img src={banner} alt="banner" width={'100%'}/>
 
-            {/* categories carousel */}
-            <Categories />
+            <div className="home _container">
+                {/* categories carousel */}
+                <Categories />
 
-            {/* random recipe */}
-            <RandomRecipe />
+                {/* random recipe */}
+                <RandomRecipe />
 
-            {/* latest recipes */}
-            <LatestRecipes />
+                {/* latest recipes */}
+                <LatestRecipes />
 
-            {/* vote */}
-            <div>
+                {/* vote */}
+                <div>
 
+                </div>
+
+                {/* popular recipes */}
+                <PopularRecipes />
             </div>
-
-            {/* popular recipes */}
-            <PopularRecipes />
+            
         </div>
     )
 }
