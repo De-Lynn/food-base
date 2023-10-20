@@ -20,7 +20,7 @@
 
 .header__logo {
     font-family: Brush Script MT;
-    font-size: calc(24px + 16 * ((100vw - 375px) / (1080 - 375)));
+    font-size: calc(20px + 16 * ((100vw - 375px) / (1080 - 375)));
     color: firebrick;
     text-align: center;
     align-self: center;
@@ -47,7 +47,7 @@
 .sm-list {
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     height: 100%;
     margin: auto 0px auto auto;
     flex-wrap: wrap;

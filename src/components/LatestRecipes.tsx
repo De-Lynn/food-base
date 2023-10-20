@@ -9,6 +9,7 @@ function LatestRecipes() {
         {id: '1', title: 'Recipe', img: recipe1, desciption: 'Some description. Some description.'},
         {id: '2', title: 'Recipe', img: recipe2, desciption: 'Some description. Some description.'},
         {id: '3', title: 'Recipe', img: recipe3, desciption: 'Some description. Some description.'},
+        {id: '4', title: 'Recipe', img: recipe1, desciption: 'Some description. Some description.'},
     ]
 
     return (
@@ -17,19 +18,22 @@ function LatestRecipes() {
             <div className='latest-recipes'>
                 {recipes.map(el => {
                     return (
-                        <div className='latest-recipe'>
-                            <div className='img-container'>
-                                <img src={el.img} alt="" />
+                        <div id={el.id} className='latest-recipe__container'>
+                            <div className='latest-recipe'>
+                                <div className='img-container'>
+                                    <img src={el.img} alt="" />
+                                </div>
+                                <Link className='link' to={'/recipes/1'}>
+                                    <div className='lr-title'><span>{el.title}</span></div>
+                                </Link>
+                                <div className='description'>
+                                    <span>{el.desciption}</span>
+                                    <br/>
+                                    <span>time</span>
+                                </div>
                             </div>
-                            <Link className='link' to={'/recipes/1'}>
-                                <div className='lr-title'><span>{el.title}</span></div>
-                            </Link>
-                            <div className='description'>
-                                <span>{el.desciption}</span>
-                                <br/>
-                                <span>time</span>
-                            </div>
-                    </div>
+                        </div>
+                        
                     )
                 })}
             </div>

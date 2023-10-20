@@ -19,7 +19,7 @@ function RecipePage() {
 
 
     return (
-        <div className='recipe-page'>
+        <div className='recipe-page _container'>
             {/* title and picture */}
             <div className='random-recipe'>
                 <div className='rr-img'>

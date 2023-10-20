@@ -8,22 +8,45 @@
 .popular-recipes {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 80px;
-    row-gap: 40px;
-    
+    margin: 0 -20px 0 -20px;
 }
 
 .popular-recipe {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    height: 120px;
     color: black;
+    padding: 0 20px 40px 20px;
 }
 
 .pr-img {
-    height: 100%;
+    height: 120px;
     aspect-ratio: 1/1;
+    align-self: center;
+}
+
+@media screen and (max-width: 768px) {
+    .popular-recipes {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .popular-recipe {
+        flex: 1 1 100%;
+    }
+    .pr-img {
+        height: 140px;
+    }
+    .descr-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .pr-img {
+        height: 100px;
+    }
 }
 
 .pr-img img {
@@ -31,10 +54,11 @@
     width: 100%;
     object-fit: cover;
     border-radius: 50%;
+    
 }
 
 .descr-container {
-    margin-left: 30px;
+    padding-left: 30px;
 }
 
 .pr-title {

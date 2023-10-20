@@ -1,6 +1,7 @@
 .random-recipe {
     margin: 40px 0px;
     height: 400px;
+    width: 100%;
     position: relative;
 }
 
@@ -19,18 +20,57 @@
 
 .rr-description {
     border-radius: 10px;
-    height: 300px;
-    width: 45%;
-    position: absolute;
-    bottom: 50px;
-    right: 0px;
     z-index: 1;
     background-color: rgb(254, 167, 135);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 50px;
+}
+
+@media (min-width: 769px) {
+    .rr-description {
+        height: 300px;
+        width: 45%;
+        position: absolute;
+        bottom: 50px;
+        right: 0px;
+        justify-content: space-between;
+        padding: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .random-recipe {
+        position: static;
+        height: auto;
+    }
+    .rr-img {
+        height: 400px;
+        width: 100%;
+        position: static;
+    }
+    
+    .rr-img img {
+        height: 400px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    
+    .rr-description {
+        border-radius: 10px;
+        height: auto;
+        width: 70%;
+        z-index: 1;
+        background-color: rgb(254, 167, 135);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        position: relative;
+        padding: 30px;
+        margin: -125px auto 0 auto;
+    }
 }
 
 .rr-description div {
@@ -46,4 +86,14 @@
     height: 40px;
     width: 120px;
     border-radius: 4px;
+}
+
+@media (max-width: 426px) {
+    .rr-description {
+        width: 85%;
+    }
+    .rr-description div {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
 }
