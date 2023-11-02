@@ -26,6 +26,7 @@
 
 .search-form {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .advanced-search .field {
@@ -39,16 +40,64 @@
     border: 1px solid #888;
 }
 
+.advanced-search .btn {
+    border-radius: 0;
+}
+
 .advanced-search .more-btn {
     background-color: rgb(254, 167, 135);
     border: 1px solid rgb(254, 167, 135);
-    border-radius: 0px;
     margin: 0 15px;
 }
 
 .advanced-search .submit-btn {
     background-color: crimson;
     border: 1px solid crimson;
-    border-radius: 0px;
     color: white;
+}
+
+/*-----------details-----------*/
+.details {
+    width: 100%;
+}
+
+.ingredients {
+    display: flex;
+}
+
+.ingredients .type {
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredients .type:not(:last-child) {
+    margin: 0 40px 0 0;
+}
+
+.ingredients .title {
+    color: black;
+    font-size: 14px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    margin: 0;
+}
+
+.ingredients .input-field {
+    width: 310px;
+    min-height: 40px;
+    font-size: 14px;
+    border: 1px solid #888;
+    margin: 8px 0;
+    padding: 0 4px;
+}
+
+.ingredients .input-field:focus {
+    outline: none;
+}
+
+.reset-btn {
+    text-align: left;
+    color: #888;
+    padding: 0 4px;
+    // border: 1px solid #888;
 }
