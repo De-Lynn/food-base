@@ -1,4 +1,4 @@
-import AdvancedSearch from "./AdvancedSearch"
+import AdvancedSearch from "./AdvancedSearch/AdvancedSearch"
 
 function SearchPage() {
     return (

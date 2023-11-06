@@ -68,10 +68,48 @@
 .ingredients .type {
     display: flex;
     flex-direction: column;
+    width: 310px;
 }
 
 .ingredients .type:not(:last-child) {
     margin: 0 40px 0 0;
+}
+
+.ingredients .tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 4px;
+}
+
+.ingredients .tags .tag {
+    border: 1px solid rgb(39, 180, 39);
+    border-radius: 4px;
+    background-color: rgb(39, 180, 39);
+    color: white;
+    margin: 4px 0;
+    padding: 4px;
+    font-size: 14px;
+    line-height: 14px;
+}
+.ingredients .exclude .tags .tag {
+    border: 1px solid rgb(180, 39, 39);
+    background-color: rgb(180, 39, 39);
+}
+
+.ingredients .tags .tag:not(:last-child) {
+    margin-right: 4px;
+}
+
+.ingredients .tags .tag .remove {
+    border: none;
+    background-color: rgb(39, 180, 39);
+    color: white;
+    font-size: 10px;
+    padding: 0;
+    margin-left: 6px;
+}
+.ingredients .exclude .tags .tag .remove {
+    background-color: rgb(180, 39, 39);
 }
 
 .ingredients .title {
@@ -83,12 +121,11 @@
 }
 
 .ingredients .input-field {
-    width: 310px;
     min-height: 40px;
+    width: 100%;
     font-size: 14px;
-    border: 1px solid #888;
-    margin: 8px 0;
-    padding: 0 4px;
+    border: none;
+    padding: 0 64px 0 4px;
 }
 
 .ingredients .input-field:focus {
@@ -99,5 +136,37 @@
     text-align: left;
     color: #888;
     padding: 0 4px;
-    // border: 1px solid #888;
+}
+
+.ingredients .circuit {
+    border: 1px solid #888;
+    position: relative;
+    margin: 8px 0;
+    width: 310px;
+    min-height: 40px;
+}
+
+.ingredients .circuit .add {
+    height: 40px;
+    width: 60px;
+    border: none;
+    font-size: 24px;
+    background-color: #aaaaaa00;
+    text-align: right;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    padding-right: 18px;
+}
+
+.ingredients .circuit .add:hover {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: 1px solid rgb(39, 180, 39);
+    background-color: rgb(39, 180, 39);
+    color: white;
+}
+.ingredients .exclude .circuit .add:hover {
+    border: 1px solid rgb(180, 39, 39);
+    background-color: rgb(180, 39, 39);
 }
