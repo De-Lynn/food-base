@@ -1,8 +1,11 @@
 import { Field, FieldArray, Form, Formik, FormikHelpers, useFormik, useFormikContext } from 'formik'
 import './AdvancedSearch.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import IngredientsBlock from './IngredientsBlock'
+import { v1 } from 'uuid'
+import { Link } from 'react-router-dom'
+import SearchResults from '../SearchResults'
 
 export type SearchValuesType = {
     include: string,
@@ -23,7 +26,7 @@ export type InrgedientsType = {
     "excluded": IncludedInrgedientType[],
 }
 
-function AdvancedSearch() {
+function AdvancedSearch(props: any) {
     const initialValues = {
         include: '',
         exclude: '',
@@ -75,7 +78,8 @@ function AdvancedSearch() {
             name: 'health',
             selectTitle: 'Any diet',
             selectOptions: health,
-        }]
+        }
+    ]
 
     const [isDetailsShown, showDetails] = useState(false)
 
@@ -87,6 +91,49 @@ function AdvancedSearch() {
         "excluded": []
     })
 
+    const [searchValues, setSearchValues] = useState({
+        mealType: '',
+        dishType: '',
+        cuisineType: '',
+        health: '',
+    })
+
+    async function fetchRecipes() {
+        let q = ingredients.included.map(el => el.ingr).toString() // ingredients list for request
+        let baseUrl = `https://api.edamam.com/api/recipes/v2?app_id=${appId}&app_key=${appKey}&type=public`
+        let url = baseUrl
+        
+        if (q !== '') url += `&q=${q}`
+        if (searchValues.mealType !== '') url += `&mealType=${searchValues.mealType}`
+        if (searchValues.dishType !== '') url += `&dishType=${searchValues.dishType}`
+        if (searchValues.cuisineType !== '') url += `&cuisineType=${searchValues.cuisineType}`
+        if (searchValues.health !== '') url += `&health=${searchValues.health}`
+
+        if (url === baseUrl) {
+            let type = ''
+            do {
+               type = mealType[Math.floor(Math.random()*mealType.length)] 
+            } while (type === '')
+            
+            url = url + `&mealType=${type}`
+        }
+        const config = {
+            url: url,
+            method: "get",
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Credentials': 'true'
+            }
+        }
+        const response = await axios.request(config).then(response => response.data.hits)
+        props.setRecipes(response)
+    }
+
+    useEffect(() => {
+        fetchRecipes()
+    }, [searchValues])
+
     return (
         <div className='advanced-search'>
             <div className="separator-container">
@@ -97,20 +144,12 @@ function AdvancedSearch() {
             <Formik
                 initialValues={initialValues}
                 onSubmit={(values, actions) => {
-                    // let config = {
-                    //     url: `https://api.edamam.com/api/recipes/v2?app_id=${appId}&app_key=${appKey}&type=public&q=meat and ${values.include}&random=true`,
-                    //     method: "get",
-                    //     headers: {
-                    //         'Access-Control-Allow-Origin': '*',
-                    //         'Access-Control-Allow-Headers': '*',
-                    //         'Access-Control-Allow-Credentials': 'true'
-                    //     }
-                    // };
-                    // let recipes = axios.request(config).then(response => response.data)
-                    // console.log(recipes)
-                    console.log({ values, actions });
-                    console.log(ingredients)
-                    alert(JSON.stringify(values, null, 2));
+                    setSearchValues({
+                        mealType: values.mealType,
+                        dishType: values.dishType,
+                        cuisineType: values.cuisineType,
+                        health: values.health,
+                    })
                     actions.setSubmitting(false);
                 }}
             >
@@ -128,16 +167,16 @@ function AdvancedSearch() {
 
                     return (
                         <Form className='search-form'>
-                            <FieldArray name='searchParams'>
+                            <FieldArray name='search-params'>
                                 {() => (
-                                    <div>
+                                    <div className='search-params'>
                                         {searchParams.map(field => (
-                                            <Field className="field select-field" name={field.name} as="select">
+                                            <Field className="field select-field" name={field.name} as="select" key={v1()}>
                                                 {field.selectOptions.map(el => {
                                                     return (
                                                         el === ''
-                                                        ? <option value={el}>{field.selectTitle}</option>
-                                                        : <option value={el}>{el}</option>
+                                                        ? <option key={v1()} value={el}>{field.selectTitle}</option>
+                                                        : <option key={v1()} value={el}>{el}</option>
                                                     )
                                                 })}
                                             </Field>
@@ -172,7 +211,6 @@ function AdvancedSearch() {
                         </Form>
                     )
                 }}
-                
             </Formik>
         </div>
     )

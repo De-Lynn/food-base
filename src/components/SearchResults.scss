@@ -1,0 +1,167 @@
+/*-----------recipe-card-----------*/
+.search-page .recipes {
+    width: 100%;
+}
+
+.search-page .recipe {
+    margin: 32px 16px;
+    box-shadow: 2px 2px 8px rgb(179, 178, 178);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+
+.search-page .recipe .description, .nutrition{
+    margin: 0;
+    padding: 16px;
+    display: grid;
+    column-gap: 16px;
+}
+
+.search-page .recipe .description {
+    grid-template-columns: 200px 1fr;
+}
+
+@media screen and (max-width: 600px) {
+    .search-page .recipe .description {
+        grid-template-columns: 1fr;
+    }
+}
+
+.search-page .recipe .description .img-container {
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.search-page .recipe .description .img-container img {
+    object-fit: cover;
+    border-radius: 0;
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.search-page .recipe .description .tags {
+    color: crimson;
+    font-size: 14px;
+
+    .delimiter {
+        margin-inline: 8px;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .search-page .recipe .description .text {
+        grid-row: 1 / 2;
+    }
+}
+
+.search-page .recipe .description .title {
+    color: black;
+    font-size: 22px;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.search-page .recipe .description .health-labels {
+    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search-page .recipe .description .health-labels .delimiter {
+    font-weight: bold;
+    margin-inline: 8px;
+}
+
+.search-page .recipe .description .health-labels :last-child .delimiter {
+    display: none;
+}
+
+.search-page .recipe .nutrition {
+    background-color: rgb(244, 236, 236);
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media screen and (max-width: 769px) {
+    .search-page .recipe .nutrition {
+        grid-template-columns: 40% 1fr;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .search-page .recipe .nutrition {
+        grid-template-columns: 40% 1fr;
+        // column-gap: 12px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    .search-page .recipe .nutrition {
+        column-gap: 12px;
+        font-size: 12px;
+    }
+}
+
+.search-page .recipe .nutrition .energy-value {
+    text-align: center;
+    font-weight: bold;
+}
+
+.search-page .recipe .nutrition .energy-value .calories span {
+    font-size: 32px;
+}
+
+.search-page .recipe .nutrition .total-nutrients div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.search-page .recipe .nutrition .total-nutrients div span {
+    position: relative;
+}
+
+.search-page .recipe .nutrition .total-nutrients div span .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    
+    &.green {
+        background-color: rgb(46, 196, 46);
+    }
+    &.yellow {
+        background-color: rgb(231, 220, 11);
+    }
+    &.red {
+        background-color: rgb(196, 46, 46);
+    }
+    
+}
+
+.search-page .recipe .nutrition .total-nutrients div :last-child {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 769px) {
+    .search-page .recipe .nutrition .energy-value {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+    }
+
+    .search-page .recipe .nutrition .total-nutrients:first-child {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+    }
+
+    .search-page .recipe .nutrition .total-nutrients:last-child {
+        grid-row: 1 / 3;
+        grid-column: 2 / 3;
+    }
+}

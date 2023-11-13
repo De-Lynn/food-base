@@ -1,6 +1,7 @@
 import { Field } from "formik"
 import { IncludedInrgedientType, InrgedientsType, SearchValuesType } from "./AdvancedSearch"
 import { Dispatch, SetStateAction } from "react"
+import { v1 } from "uuid"
 
 type IngredientsBlockPropsType = {
     values: SearchValuesType,
@@ -57,7 +58,7 @@ function IngredientsBlock(props: IngredientsBlockPropsType) {
                 ? tags = props.ingredients.included
                 : tags = props.ingredients.excluded
                 return (
-                <div className={'type ' + block.type}>
+                <div className={'type ' + block.type} key={v1()}>
                     <span className='title'>{block.title}</span>
                     <div className='circuit'>
                         <div className='tags'>

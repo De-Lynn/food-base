@@ -1,3 +1,4 @@
+import { v1 } from 'uuid'
 import './Footer.scss'
 
 function Footer() {
@@ -22,7 +23,7 @@ function Footer() {
                         <div key={el.id} className='chapter'>
                             <div className='chapter-title'>{el.title}</div>
                             <div className='chapter-content'>
-                                {el.content.map(content => <span>{content}</span>)}
+                                {el.content.map(content => <span key={v1()}>{content}</span>)}
                             </div>
                         </div>
                     )

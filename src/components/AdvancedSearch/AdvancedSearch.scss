@@ -15,18 +15,21 @@
 
 .separator-title {
     background-color: white;
-    width: 15%;
+    // width: 15%;
+    width: calc(162px);
     text-align: center;
     position: absolute;
     top: -12px;
     left: 50%;
-    margin-left: -7.5%;
+    // margin-left: -7.5%;
+    margin-left: -81px;
     color: #888;
 }
 
 .search-form {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .advanced-search .field {
@@ -38,6 +41,7 @@
 .advanced-search .select-field {
     background-color: white;
     border: 1px solid #888;
+    margin-bottom: 16px;
 }
 
 .advanced-search .btn {
@@ -56,6 +60,20 @@
     color: white;
 }
 
+@media screen and (max-width: 1024px) {
+    .advanced-search .more-btn {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .advanced-search .search-params {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
+
 /*-----------details-----------*/
 .details {
     width: 100%;
@@ -63,6 +81,7 @@
 
 .ingredients {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .ingredients .type {
@@ -75,6 +94,14 @@
     margin: 0 40px 0 0;
 }
 
+@media screen and (max-width: 375px) {
+    .ingredients .type {
+        width: 100%;
+    }
+    .ingredients .type:not(:last-child) {
+        margin: 0;
+    }
+}
 .ingredients .tags {
     display: flex;
     flex-wrap: wrap;
@@ -157,6 +184,12 @@
     bottom: 0px;
     right: 0px;
     padding-right: 18px;
+}
+
+@media screen and (max-width: 375px) {
+    .ingredients .circuit {
+        width: 100%;
+    }
 }
 
 .ingredients .circuit .add:hover {
