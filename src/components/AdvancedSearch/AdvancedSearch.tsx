@@ -115,7 +115,7 @@ function AdvancedSearch(props: any) {
                type = mealType[Math.floor(Math.random()*mealType.length)] 
             } while (type === '')
             
-            url = url + `&mealType=${type}`
+            url = url + `&mealType=${type}&random=true`
         }
         const config = {
             url: url,
@@ -130,9 +130,9 @@ function AdvancedSearch(props: any) {
         props.setRecipes(response)
     }
 
-    useEffect(() => {
-        fetchRecipes()
-    }, [searchValues])
+    // useEffect(() => {
+    //     fetchRecipes()
+    // }, [searchValues])
 
     return (
         <div className='advanced-search'>

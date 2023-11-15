@@ -75,7 +75,6 @@ function SearchResults(props: any) {
                                             <span>{Math.floor(el.recipe.totalNutrients.FE.quantity)} mg</span>
                                         </div>
                                     </div> 
-                                    {/* <div>time</div> */}
                                 </div>
                             </div>
                         </Link>

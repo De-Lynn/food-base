@@ -1,6 +1,7 @@
 import { useState } from "react"
 import AdvancedSearch from "./AdvancedSearch/AdvancedSearch"
 import SearchResults from "./SearchResults"
+import './SearchPage.scss'
 
 function SearchPage() {
     const [recipes, setRecipes] = useState<any>([

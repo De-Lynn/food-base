@@ -1,20 +1,21 @@
 .random-recipe {
     margin: 40px 0px;
-    height: 400px;
+    height: 300px;
     width: 100%;
     position: relative;
 }
 
 .rr-img {
-    height: 400px;
-    width: 65%;
+    height: 300px;
+    width: 300px;
     position: absolute;
+    left: calc((100% - (300px + 45% - 20px)) / 2);
 }
 
 .rr-img img {
-    height: 400px;
+    height: 300px;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 10px;
 }
 
@@ -27,49 +28,45 @@
     align-items: center;
 }
 
-@media (min-width: 769px) {
-    .rr-description {
-        height: 300px;
-        width: 45%;
-        position: absolute;
-        bottom: 50px;
-        right: 0px;
-        justify-content: space-between;
-        padding: 50px;
-    }
+.rr-description {
+    height: 200px;
+    width: 45%;
+    position: absolute;
+    bottom: 50%;
+    margin-bottom: -100px;
+    justify-content: space-between;
+    padding: 30px;
+    right: calc((100% - (300px + 45% - 20px)) / 2);
+    text-align: center;
+}
+
+.rr-description .title {
+    color: rgb(34, 33, 33);
+    font-weight: bold;
 }
 
 @media (max-width: 768px) {
     .random-recipe {
-        position: static;
-        height: auto;
+        height: 200px;
     }
     .rr-img {
-        height: 400px;
-        width: 100%;
-        position: static;
+        height: 200px;
+        width: 200px;
+        left: calc((100% - (200px + 60% - 30px)) / 2);
     }
-    
     .rr-img img {
-        height: 400px;
+        height: 100%;
         width: 100%;
-        object-fit: cover;
-        border-radius: 10px;
     }
-    
     .rr-description {
-        border-radius: 10px;
-        height: auto;
-        width: 70%;
-        z-index: 1;
-        background-color: rgb(254, 167, 135);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        position: relative;
-        padding: 30px;
-        margin: -125px auto 0 auto;
+        height: 150px;
+        width: 60%;
+        margin-bottom: -75px;
+        right: calc((100% - (200px + 60% - 30px)) / 2);
+        padding: 20px;
+    }
+    .rr-description .title {
+        font-size: 18px;
     }
 }
 
@@ -89,11 +86,32 @@
 }
 
 @media (max-width: 426px) {
-    .rr-description {
-        width: 85%;
+    .random-recipe {
+        height: auto;
+        position: static;
     }
-    .rr-description div {
-        font-size: 1.3em;
-        margin-bottom: 10px;
+    .rr-img {
+        height: 300px;
+        width: 300px;
+        left: 50%;
+        margin-left: -150px;
+        position: relative;
+    }
+    .rr-img img {
+        height: 100%;
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+    .rr-description {
+        position: relative;
+        height: 150px;
+        width: 300px;
+        left: 50%;
+        margin: 0 0 0 -150px;
+        padding: 20px;
+        border-radius: 0 0 10px 10px;
+    }
+    .rr-description .title {
+        font-size: 16px;
     }
 }
