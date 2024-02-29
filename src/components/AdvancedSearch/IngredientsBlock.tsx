@@ -10,20 +10,23 @@ type IngredientsBlockPropsType = {
 }
 
 function IngredientsBlock(props: IngredientsBlockPropsType) {
+    // const {values, ingredients, setIngredients, ...rest} = props
     const ingredientsBlock = [
         {
+            id: v1(),
             type: 'include',
             title: 'INCLUDE INGREDIENTS',
             tag: 'included',
             inputFieldPlaceholder: '+ Ingredient',
-            addBtnText: '+'
+            addBtnText: '+',
         },
         {
+            id: v1(),
             type: 'exclude',
             title: 'EXCLUDE INGREDIENTS',
             tag: 'excluded',
             inputFieldPlaceholder: '- Ingredient',
-            addBtnText: '-'
+            addBtnText: '-',
         }
     ]
 
@@ -54,11 +57,16 @@ function IngredientsBlock(props: IngredientsBlockPropsType) {
         <div className='ingredients'>
             {ingredientsBlock.map(block => {
                 let tags
-                block.type === 'include'
-                ? tags = props.ingredients.included
-                : tags = props.ingredients.excluded
+                let inputString = ''
+                if (block.type === 'include') {
+                    tags = props.ingredients.included
+                    inputString = props.values.include
+                } else {
+                    tags = props.ingredients.excluded
+                    inputString = props.values.exclude
+                }
                 return (
-                <div className={'type ' + block.type} key={v1()}>
+                <div className={'type ' + block.type} key={block.id}>
                     <span className='title'>{block.title}</span>
                     <div className='circuit'>
                         <div className='tags'>
@@ -77,13 +85,15 @@ function IngredientsBlock(props: IngredientsBlockPropsType) {
                                 )
                             })}
                         </div>
-                        <Field className='input-field' id={block.type} name={block.type} placeholder={block.inputFieldPlaceholder}></Field>
+                        <Field className='input-field' id={block.type} name={block.type} placeholder={block.inputFieldPlaceholder}>
+                            {/* {({
+                                field: {value},
+                            }) => (
+                                <input type="text" value={value}/>
+                            )} */}
+                        </Field>
                         <button className='add' type='button' 
                             onClick={() => {
-                                let inputString
-                                block.type === 'include'
-                                ? inputString = props.values.include
-                                : inputString = props.values.exclude
                                 if (inputString.trim()) {
                                     addIngredients(block.tag, tags.length, inputString)
                                     block.type === 'include'

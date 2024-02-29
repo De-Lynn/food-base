@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom'
 import './Header.scss'
 
 function Header() {
+  const onSearchButtonClick = () => {
 
+  }
 
   return (
     <div className='header-wrapper'>
@@ -10,6 +12,7 @@ function Header() {
         {/* search */}
         <div className='header__input input__container'>
           <input className='header__input input' type="text" />
+          <button onClick={onSearchButtonClick}>S</button>
         </div>
 
         {/* title */}

@@ -1,0 +1,6 @@
+export const HOME_ROUTE = '/'
+export const LOGIN_ROUTE = '/login'
+export const REGISTRATION_ROUTE = '/registration'
+export const RECIPE_ROUTE = '/recipe'
+export const SEARCH_ROUTE = '/search'
+export const PROFILE_ROUTE = '/profile'

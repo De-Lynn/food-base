@@ -1,10 +1,10 @@
-import { useState } from "react"
-import AdvancedSearch from './AdvancedSearch/AdvancedSearch'
-import SearchResults from "./SearchResults"
-import './SearchPage.scss'
+//-------------- actions' types --------------\\
+// const SET_IS_AUTH = 'SET_IS_AUTH'
 
-function SearchPage() {
-    const [recipes, setRecipes] = useState<any>([
+
+//-------------- initial state --------------\\
+const initialState = {
+    results: [
         {
             recipe: {
                 calories: 254.15999998710873,
@@ -235,14 +235,22 @@ function SearchPage() {
                 }
             },
         },
-    ])
-    
-    return (
-        <div className='search-page _container'>
-            <AdvancedSearch setRecipes={setRecipes}/>
-            <SearchResults recipes={recipes}/>
-        </div>
-    )
+    ]
 }
 
-export default SearchPage
+//-------------- reducer --------------\\
+export default function resultsReducer(state = initialState, action: any) {
+    switch(action.type) {
+        default:
+            return state
+    }
+}
+
+//-------------- actions --------------\\
+// export const setIsAuth = () => ({type: SET_IS_AUTH})
+
+
+//-------------- selectors --------------\\
+// export const getIsAuth = (state: any) => {
+//     return state.user.isAuth
+// }

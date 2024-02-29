@@ -29,7 +29,7 @@ function Footer() {
                     )
                 })}
             </div>
-            <div className='header__logo'>
+            <div className='navbar__logo'>
                 Pleasure Food
             </div>
         </div>

@@ -1,11 +1,12 @@
 import React from 'react';
-import axios from 'axios';
 import Header from './components/Header'
 import Footer from './components/Footer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RecipePage from './components/RecipePage';
-import Home from './components/Home';
 import SearchPage from './components/SearchPage';
+import AppRouter from './components/AppRouter';
+import NavBar from './components/NavBar';
+import './App.scss'
 
 function App() {
 
@@ -22,22 +23,25 @@ function App() {
   };
   // let recipes = axios.request(config).then(response => response.data)
   // console.log(recipes)
+  
   return (
     <BrowserRouter>
       {/* main page */}
       <div className='wrapper'>
         {/* header */}
-        <Header />
-
+        {/* <Header /> */}
+        <div className='wrapper__navbar'>
+          <NavBar />
+        </div>
         {/* body */}
-        <Routes>
-          <Route path={'/'} element={<Home />} />
-          <Route path={'/recipes'} element={<SearchPage />}/>
-          <Route path={'/recipes/:recipeId'} element={<RecipePage />} />
-        </Routes>
+        <div className='wrapper__body '>
+          <AppRouter />
+        </div>
 
         {/* footer */}
-        <Footer />
+        <div className='wrapper__footer'>
+          <Footer />
+        </div>
       </div>
     </BrowserRouter>
   );
