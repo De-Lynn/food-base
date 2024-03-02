@@ -1,0 +1,147 @@
+.recipe-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+
+.recipe {
+    &__img {
+        width: 100%;
+        max-width: 800px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__description {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 40px;
+        width: 100%;
+        padding: 20px;
+        margin-top: -60px;
+        row-gap: 8px;
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    &__information {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    &__tags {
+        display: flex;
+        flex-direction: row;
+        column-gap: 8px;
+        color: gray;
+    }
+}
+
+.information {
+    &__img {
+        width: 24px;
+        height: 24px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        column-gap: 8px;
+    }
+
+    &__text {
+        line-height: 28px;
+    }
+}
+
+.delimiter {
+    font-weight: 900;
+}
+
+.ingredients {
+    &__title {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    &__list {
+        margin-top: 8px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+
+    }
+
+    &__item {
+        padding: 8px;
+        padding-inline: 16px;
+        border: 1px solid rgb(244, 236, 236);
+        border-radius: 100px;
+        background-color: rgb(244, 236, 236);
+    }
+}
+
+.nutrition {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    align-items: center;
+
+    &__title {
+        align-self: flex-start;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    &__group {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 16px;
+        row-gap: 8px;
+        justify-content: center;
+    }
+
+    &__item {
+        width: 94px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__name {
+        width: 100%;
+        text-align: center;
+        padding: 4px;
+        box-sizing: border-box;
+        background-color: crimson;
+        color: white;
+        font-weight: bolder;
+    }
+}
+
+@media screen and (min-width: 800px) { 
+    .ingredients {
+        &__list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 16px;
+        }
+    }
+}

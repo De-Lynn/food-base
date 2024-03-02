@@ -1,10 +1,14 @@
 import './RandomRecipe.scss'
 import lasagna from '../img/lasagna.jpg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { RECIPE_ROUTE } from '../utils/consts'
+import { v1 } from 'uuid'
 
 function RandomRecipe() {
+    const navigate = useNavigate()
+
     const cuisineType = [
         '', 'American', 'Asian', 'British', 'Caribbean', 'Central Europe', 
         'Chinese', 'Eastern Europe', 'French', 'Indian', 'Italian', 
@@ -17,6 +21,7 @@ function RandomRecipe() {
 
     const [randomRecipe, setRandomRecipe] = useState({
         recipe: {
+            id: v1(),
             calories: 1964.1280164562957,
             cautions: [ "Gluten", "Wheat", "Sulfites" ],
             co2EmissionsClass: "F",
@@ -96,13 +101,14 @@ function RandomRecipe() {
             }
         }
         const response = await axios.request(config).then(response => response.data.hits)
+        response[0].recipe['id'] = v1()
         setRandomRecipe(response[0])
         console.log(response[0])
     }
 
-    // useEffect(() => {
-    //     getRecipe()
-    // }, [])
+    useEffect(() => {
+        getRecipe()
+    }, [])
 
     return (
         <div className='random-recipe'>
@@ -118,9 +124,9 @@ function RandomRecipe() {
             {/* description */}
             <div className='rr-description'>
                 <div className='title'>{randomRecipe.recipe.label}</div>
-                <Link to={'/recipes/1'}>
-                    <button>View recipe</button>
-                </Link>
+                {/* <Link to={'/recipes/1'}> */}
+                <button onClick={() => {navigate(RECIPE_ROUTE + '/' + randomRecipe.recipe.id)}}>View recipe</button>
+                {/* </Link> */}
             </div>
         </div>
     )

@@ -43,7 +43,7 @@ function Categories() {
                 <div className="categories-carousel">
                     {categories.map(el => {
                         return (
-                            <div className="category">
+                            <div key={el.id} className="category">
                                 <div className='img'>
                                     <img src={el.url} alt="" />
                                 </div>

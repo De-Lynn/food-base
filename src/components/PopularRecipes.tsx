@@ -6,11 +6,13 @@ import recipe4 from '../img/brunch.jpg'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { v1 } from 'uuid'
 
 function PopularRecipes() {
     const [popularRecipes, setPopularRecipes] = useState([
         {
             recipe: {
+                id: v1(),
                 calories: 1964.1280164562957,
                 cautions: [ "Gluten", "Wheat", "Sulfites" ],
                 co2EmissionsClass: "F",
@@ -72,6 +74,7 @@ function PopularRecipes() {
         },
         {
             recipe: {
+                id: v1(),
                 calories: 1964.1280164562957,
                 cautions: [ "Gluten", "Wheat", "Sulfites" ],
                 co2EmissionsClass: "F",
@@ -133,6 +136,7 @@ function PopularRecipes() {
         },
         {
             recipe: {
+                id: v1(),
                 calories: 1964.1280164562957,
                 cautions: [ "Gluten", "Wheat", "Sulfites" ],
                 co2EmissionsClass: "F",
@@ -194,6 +198,7 @@ function PopularRecipes() {
         },
         {
             recipe: {
+                id: v1(),
                 calories: 1964.1280164562957,
                 cautions: [ "Gluten", "Wheat", "Sulfites" ],
                 co2EmissionsClass: "F",
@@ -293,8 +298,8 @@ function PopularRecipes() {
             <div className='popular-recipes'>
                 {popularRecipes.map(el => {
                     return (
-                        <Link className='link' to={'/recipes/1'}>
-                            <div className='popular-recipe'>
+                        <Link key={el.recipe.id} className='link' to={'/recipes/1'}>
+                            <div key={el.recipe.id} className='popular-recipe'>
                                 <div className='pr-img'>
                                     <img src={el.recipe.images.REGULAR.url} alt="" />
                                 </div>

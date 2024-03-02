@@ -5,11 +5,13 @@ import recipe3 from '../img/lasagna.jpg'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { v1 } from 'uuid'
 
 function LatestRecipes() {
     const [latestRecipes, setLatestRecipes] = useState([
         {
             recipe: {
+                id: v1(),
                 calories: 1964.1280164562957,
                 cautions: [ "Gluten", "Wheat", "Sulfites" ],
                 co2EmissionsClass: "F",
@@ -71,6 +73,7 @@ function LatestRecipes() {
         },
         {
             recipe: {
+                id: v1(),
                 calories: 1964.1280164562957,
                 cautions: [ "Gluten", "Wheat", "Sulfites" ],
                 co2EmissionsClass: "F",
@@ -132,6 +135,7 @@ function LatestRecipes() {
         },
         {
             recipe: {
+                id: v1(),
                 calories: 1964.1280164562957,
                 cautions: [ "Gluten", "Wheat", "Sulfites" ],
                 co2EmissionsClass: "F",
@@ -193,6 +197,7 @@ function LatestRecipes() {
         },
         {
             recipe: {
+                id: v1(),
                 calories: 1964.1280164562957,
                 cautions: [ "Gluten", "Wheat", "Sulfites" ],
                 co2EmissionsClass: "F",
@@ -292,7 +297,7 @@ function LatestRecipes() {
             <div className='latest-recipes'>
                 {latestRecipes.map(el => {
                     return (
-                        <div /*id={el.id}*/ className='latest-recipe__container'>
+                        <div key={el.recipe.id} className='latest-recipe__container'>
                             <div className='latest-recipe'>
                                 <div className='img-container'>
                                     <img src={el.recipe.images.REGULAR.url} alt="" />
