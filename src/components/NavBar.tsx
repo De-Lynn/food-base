@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useAppDispath, useAppSelector } from "../store/hooks"
-import { getIsAuth, setIsAuth} from "../store/userReducer"
+import { getIsAuth, setIsAuth, setUser} from "../store/userReducer"
 import './NavBar.scss'
 import { HOME_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE, SEARCH_ROUTE } from "../utils/consts"
 
@@ -9,11 +9,12 @@ const NavBar = () => {
     const dispatch = useAppDispath()
 
     const onSearchButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        alert(e.target)
+        // alert(e.target)
     }
 
-    const onSinginButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        dispatch(setIsAuth(!isAuth))
+    const onSingoutButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        dispatch(setUser({}))
+        dispatch(setIsAuth(false))
     }
   
     return (
@@ -44,7 +45,7 @@ const NavBar = () => {
                 {isAuth 
                     ? <div className="navbar__auth">
                         <Link to={PROFILE_ROUTE}>Profile</Link>
-                        <button onClick={onSinginButtonClick}>Sign out</button>
+                        <button onClick={onSingoutButtonClick}>Sign out</button>
                     </div>
                     : <div className="navbar__auth">
                         <Link to={LOGIN_ROUTE}>

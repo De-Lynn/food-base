@@ -15,8 +15,12 @@ function SearchResults(props: any) {
                                 </div>
                                 <div className='text'>
                                     <div className='tags'>
-                                        {el.recipe.dishType[0].toUpperCase()}
-                                        <span className='delimiter'>&#183;</span>
+                                        {!!el.recipe.dishType &&
+                                            <>{el.recipe.dishType[0].toUpperCase()}</>
+                                        }
+                                        {!!el.recipe.dishType &&
+                                            <span className='delimiter'>&#183;</span>
+                                        }
                                         {el.recipe.cuisineType[0].toUpperCase()}
                                     </div>
                                     <div className='title'>{el.recipe.label}</div>
