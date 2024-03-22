@@ -1,7 +1,7 @@
 import { useState } from "react"
 import AdvancedSearch from "../components/AdvancedSearch/AdvancedSearch"
 import SearchResults from "../components/SearchResults"
-import '../components/SearchPage.scss'
+import '../styles/SearchPage.scss'
 
 const Search = () => {
     // const [recipes, setRecipes] = useState<any>([

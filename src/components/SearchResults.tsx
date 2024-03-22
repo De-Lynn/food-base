@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom"
-import { v1 } from "uuid"
-import "./SearchResults.scss"
+import "../styles/SearchResults.scss"
 
 function SearchResults(props: any) {
     return (
         <div className='recipes'>
             {props.recipes.length !== 0 && props.recipes.map((el: any) => {
                 return (
-                    <Link className='link' to={'/recipes/1'}>
-                        <div className='recipe' key={v1()}>
+                    <Link key={el.recipe.id} className='link' to={'/recipes/1'}>
+                        <div className='recipe'>
                             <div className='description'>
                                 <div className='img-container'>
                                     <img className='img' src={el.recipe.images.SMALL.url} alt="" />
@@ -25,7 +24,7 @@ function SearchResults(props: any) {
                                     </div>
                                     <div className='title'>{el.recipe.label}</div>
                                     <div className='health-labels'>
-                                        {el.recipe.healthLabels.map((l: string) => <span>{l}
+                                        {el.recipe.healthLabels.map((l: string, index: number) => <span key={index}>{l}
                                             <span className='delimiter'>&#183;</span>
                                         </span>)}
                                     </div>

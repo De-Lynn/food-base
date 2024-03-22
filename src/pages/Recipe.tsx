@@ -2,7 +2,7 @@ import { v1 } from "uuid"
 import img from '../img/lasagna.jpg'
 import clockImg from '../img/clock.svg'
 import spoonImg from '../img/spoon.svg'
-import './Recipe.scss'
+import '../styles/Recipe.scss'
 
 const Recipe = () => {
     const ingredients = [

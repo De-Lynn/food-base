@@ -1,10 +1,6 @@
-import './LatestRecipes.scss'
-import recipe1 from '../img/main-page-banner.jpg'
-import recipe2 from '../img/banner2.jpg'
-import recipe3 from '../img/lasagna.jpg'
+import '../styles/LatestRecipes.scss'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { v1 } from 'uuid'
 import { fetchRecipes } from '../http/recipeAPI'
 

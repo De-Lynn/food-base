@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useAppDispath, useAppSelector } from "../store/hooks"
 import { getIsAuth, setIsAuth, setUser} from "../store/userReducer"
-import './NavBar.scss'
+import '../styles/NavBar.scss'
 import { HOME_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE, SEARCH_ROUTE } from "../utils/consts"
 
 const NavBar = () => {
@@ -21,9 +21,9 @@ const NavBar = () => {
         <div className='navbar _container'>
             {/* search */}
             <div className='navbar__input input__container'>
-                <input className='navbar__input input' type="text" />
+                <input className='navbar__input input' type="text"  placeholder='Enter an ingredients'/>
                 <Link to={SEARCH_ROUTE}>
-                    <button onClick={onSearchButtonClick}>S</button>
+                    <button onClick={onSearchButtonClick}>Search</button>
                 </Link>
             </div>
                 

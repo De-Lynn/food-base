@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import './Auth.scss'
+import '../styles/Auth.scss'
 import { HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/consts'
 import { useState } from 'react'
 import { useAppDispath } from '../store/hooks'

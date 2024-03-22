@@ -1,11 +1,6 @@
-import './PopularRecipes.scss'
-import recipe1 from '../img/breakfast.jpg'
-import recipe2 from '../img/lunch.jpg'
-import recipe3 from '../img/snack.jpeg'
-import recipe4 from '../img/brunch.jpg'
+import '../styles/PopularRecipes.scss'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { v1 } from 'uuid'
 import { fetchRecipes } from '../http/recipeAPI'
 

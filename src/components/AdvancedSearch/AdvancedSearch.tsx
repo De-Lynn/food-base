@@ -1,14 +1,12 @@
-import './AdvancedSearch.scss'
+import '../../styles/AdvancedSearch.scss'
 import { useEffect, useState } from 'react'
 import { Field, FieldArray, Form, Formik } from 'formik';
-import axios from 'axios';
 import IngredientsBlock from './IngredientsBlock';
 import { v1 } from 'uuid';
-import SearchForm from './SearchForm';
 import { fetchRecipes } from '../../http/recipeAPI';
 
 export type SearchValuesType = {
-    include: string,
+    [include: string]: string,
     exclude: string,
     mealType: string,
     dishType: string,
@@ -22,8 +20,8 @@ export type IncludedInrgedientType = {
 }
 
 export type InrgedientsType = {
-    "included": IncludedInrgedientType[],
-    "excluded": IncludedInrgedientType[],
+    [included: string]: IncludedInrgedientType[],
+    excluded: IncludedInrgedientType[],
 }
 
 const mealType = ['', 'Breakfast', 'Dinner', 'Lunch', 'Snack', 'Teatime'];
@@ -49,17 +47,16 @@ const health = [
     'vegan', 'vegetarian', 'wheat-free'
 ];
 
-function AdvancedSearch(props: any) {
-    const initialValues = {
-        include: '',
-        exclude: '',
-        mealType: '',
-        dishType: '',
-        cuisineType: '',
-        health: '',
-    };
+const initialValues = {
+    include: '',
+    exclude: '',
+    mealType: '',
+    dishType: '',
+    cuisineType: '',
+    health: '',
+};
 
-    const searchParams = [
+const searchParams = [
         {
             id: v1(),
             name: 'mealType',
@@ -84,8 +81,9 @@ function AdvancedSearch(props: any) {
             selectTitle: 'Any diet',
             selectOptions: health,
         }
-    ];
+];
 
+function AdvancedSearch(props: any) {
     const [ingredients, setIngredients] = useState<InrgedientsType>({
         "included": [],
         "excluded": []
@@ -115,6 +113,10 @@ function AdvancedSearch(props: any) {
 
         const response = await fetchRecipes(requestParams)
             .then(response => response.hits)
+
+        response.forEach((element: any) => {
+            element.recipe['id'] = v1()
+        })
         props.setRecipes(response);
     }
 
@@ -147,13 +149,10 @@ function AdvancedSearch(props: any) {
             >
                 {(props) => {
                     const {
-                        values, handleChange, resetForm
+                        values, resetForm
                     } = props;
 
                     return (
-                        // <SearchForm searchParams={searchParams} ingredients={ingredients} setIngredients={setIngredients} values={values}
-                        //     resetForm={resetForm}/>
-
                         //--------------- SearchForm -------------------//
                         <Form className='search-form'>
                             <FieldArray name='search-params'>
@@ -184,62 +183,16 @@ function AdvancedSearch(props: any) {
                                     <div className='h-line'></div>
                                     <IngredientsBlock values={values} ingredients={ingredients} setIngredients={setIngredients}/>
 
-                                    {/*--------------------ingredients block------------------- */}
-                                    {/* <div className='ingredients'>
-                                        {ingredientsBlock.map(block => {
-                                            let tags
-                                            block.type === 'include'
-                                            ? tags = ingredients.included
-                                            : tags = ingredients.excluded
-                                            return (
-                                            <div className={'type ' + block.type} key={block.id}>
-                                                <span className='title'>{block.title}</span>
-                                                <div className='circuit'>
-                                                    <div className='tags'>
-                                                        {tags.map((el: IncludedInrgedientType) => {
-                                                            return (
-                                                                <div className='tag'>
-                                                                    <span >{el.ingr}</span>
-                                                                    <button className='remove' type='button' 
-                                                                        onClick={() => {
-                                                                            removeIngredients(block.tag, el.id)
-                                                                        }}
-                                                                    >
-                                                                        &#10005;
-                                                                    </button>
-                                                                </div>
-                                                            )
-                                                        })}
-                                                    </div>
-                                                    <Field className='input-field' id={block.type} name={block.type} placeholder={block.inputFieldPlaceholder}></Field>
-                                                    <button className='add' type='button' 
-                                                        onClick={() => {
-                                                            let inputString
-                                                            block.type === 'include'
-                                                            ? inputString = values.include
-                                                            : inputString = values.exclude
-                                                            if (inputString.trim()) {
-                                                                addIngredients(block.tag, tags.length, inputString)
-                                                                block.type === 'include'
-                                                                ? values.include = ''
-                                                                : values.exclude = ''
-                                                            }
-                                                        }}
-                                                    >
-                                                        {block.addBtnText}
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        )})}
-                                    </div> */}
-
                                     <button className='field btn reset-btn' type='button'
                                         onClick={() => {
                                             resetForm();
-                                            setIngredients({
-                                                "included": [],
-                                                "excluded": []
-                                            });
+                                            
+                                            const newIngr = {...ingredients}
+                                            let key
+                                            for (key in newIngr) {
+                                                newIngr[key] = []
+                                            }
+                                            setIngredients(newIngr);
                                         }}
                                     >
                                         &#10005; Clear all

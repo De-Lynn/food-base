@@ -1,5 +1,5 @@
 import { v1 } from 'uuid'
-import './Footer.scss'
+import '../styles/Footer.scss'
 
 function Footer() {
     const footerContent = [

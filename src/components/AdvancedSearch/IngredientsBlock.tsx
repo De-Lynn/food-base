@@ -9,62 +9,44 @@ type IngredientsBlockPropsType = {
     setIngredients: Dispatch<SetStateAction<InrgedientsType>>,
 }
 
+const ingredientsBlock = [
+    {
+        id: v1(),
+        type: 'include',
+        title: 'INCLUDE INGREDIENTS',
+        tag: 'included',
+        inputFieldPlaceholder: '+ Ingredient',
+        addBtnText: '+',
+    },
+    {
+        id: v1(),
+        type: 'exclude',
+        title: 'EXCLUDE INGREDIENTS',
+        tag: 'excluded',
+        inputFieldPlaceholder: '- Ingredient',
+        addBtnText: '-',
+    }
+]
+
 function IngredientsBlock(props: IngredientsBlockPropsType) {
     // const {values, ingredients, setIngredients, ...rest} = props
-    const ingredientsBlock = [
-        {
-            id: v1(),
-            type: 'include',
-            title: 'INCLUDE INGREDIENTS',
-            tag: 'included',
-            inputFieldPlaceholder: '+ Ingredient',
-            addBtnText: '+',
-        },
-        {
-            id: v1(),
-            type: 'exclude',
-            title: 'EXCLUDE INGREDIENTS',
-            tag: 'excluded',
-            inputFieldPlaceholder: '- Ingredient',
-            addBtnText: '-',
-        }
-    ]
 
     const addIngredients = (type: string, id: number, ingr: string) => {
-        let copy
-        if (type==='included') {
-            copy = [...props.ingredients.included]
-            copy.push({id: id, ingr: ingr}) 
-            props.setIngredients({...props.ingredients, included: copy})
-        } else if (type==='excluded') {
-            copy = [...props.ingredients.excluded]
-            copy.push({id: id, ingr: ingr}) 
-            props.setIngredients({...props.ingredients, excluded: copy})
-        }
+        let copy = [...props.ingredients[type]]
+        copy.push({id: id, ingr: ingr}) 
+        props.setIngredients({...props.ingredients, [type]: copy})
     }
+
     const removeIngredients = (type: string, id: number) => {
-        let copy
-        if (type==='included') {
-            copy = [...props.ingredients.included].filter(el => el.id !== id)
-            props.setIngredients({...props.ingredients, included: copy})
-        } else if (type==='excluded') {
-            copy = [...props.ingredients.excluded].filter(el => el.id !== id)
-            props.setIngredients({...props.ingredients, excluded: copy})
-        }
+        let copy = [...props.ingredients[type]].filter(el => el.id !== id)
+        props.setIngredients({...props.ingredients, [type]: copy})
     }
 
     return (
         <div className='ingredients'>
             {ingredientsBlock.map(block => {
-                let tags
-                let inputString = ''
-                if (block.type === 'include') {
-                    tags = props.ingredients.included
-                    inputString = props.values.include
-                } else {
-                    tags = props.ingredients.excluded
-                    inputString = props.values.exclude
-                }
+                let tags = props.ingredients[`${block.type}d`]
+                let inputString = props.values[block.type]
                 return (
                 <div className={'type ' + block.type} key={block.id}>
                     <span className='title'>{block.title}</span>
@@ -72,7 +54,7 @@ function IngredientsBlock(props: IngredientsBlockPropsType) {
                         <div className='tags'>
                             {tags.map((el: IncludedInrgedientType) => {
                                 return (
-                                    <div className='tag'>
+                                    <div className='tag' key={el.id}>
                                         <span >{el.ingr}</span>
                                         <button className='remove' type='button' 
                                             onClick={() => {
@@ -85,20 +67,16 @@ function IngredientsBlock(props: IngredientsBlockPropsType) {
                                 )
                             })}
                         </div>
-                        <Field className='input-field' id={block.type} name={block.type} placeholder={block.inputFieldPlaceholder}>
-                            {/* {({
-                                field: {value},
-                            }) => (
-                                <input type="text" value={value}/>
-                            )} */}
+                        <Field className='input-field' id={block.type} name={block.type} 
+                            placeholder={block.inputFieldPlaceholder} value={inputString}
+                        >
                         </Field>
                         <button className='add' type='button' 
                             onClick={() => {
                                 if (inputString.trim()) {
-                                    addIngredients(block.tag, tags.length, inputString)
-                                    block.type === 'include'
-                                    ? props.values.include = ''
-                                    : props.values.exclude = ''
+                                    addIngredients(block.tag, tags.length, inputString.trim())
+                                    
+                                    props.values[block.type] = ''
                                 }
                             }}
                         >
